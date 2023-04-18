@@ -3,11 +3,12 @@ import logo from "../img/Logo.svg";
 function Footer() {
   return (
     <footer>
-      <img src={logo} alt="Little Lemon Logo"/>
-      <ul>
-        <li>
+      <section>
+        <img src={logo} alt="Little Lemon Logo"/>
+        <ul className="footer_menu">
+          <li>
             Doormat Navigation
-            <ul>
+            <ul className="footer_menu_inner">
                 <li><a href="/home">Home</a></li>
                 <li><a href="/about">About</a></li>
                 <li><a href="/menu">Menu</a></li>
@@ -15,23 +16,24 @@ function Footer() {
                 <li><a href="/order">Order Online</a></li>
                 <li><a href="/login">Login</a></li>
             </ul>
-        </li>
-        <li>
+          </li>
+          <li>
             Contact
-            <ul>
+            <ul className="footer_menu_inner">
                 <li>Adress</li>
                 <li>Phone number</li>
                 <li>Email</li>
             </ul>
-        </li>
-        <li>
+          </li>
+          <li>
             Social Media Links
-            <ul>
+            <ul className="footer_menu_inner">
                 <li><a href="#">Facebook</a></li>
                 <li><a href="#">Instagram</a></li>
             </ul>
-        </li>
-      </ul>
+          </li>
+        </ul>
+      </section>
     </footer>
   )
 }
