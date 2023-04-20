@@ -162,7 +162,6 @@ main button:hover {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  position: relative;
 }
 
 .hightlights article {
@@ -256,6 +255,7 @@ footer .footer_menu>li {
   font-size: 20px;
   line-height: 23px;
   color: #495E57;
+  margin-right: 16px;
 }
 
 footer .footer_menu_inner {
@@ -316,4 +316,54 @@ footer .footer_menu_inner a:hover {
   footer {
     display: none;
   }
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 378px;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+form label, input, select {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #495E57;
+  height: 40px;
+
+  border-radius: 8px;
+}
+
+form input, select {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+form label {
+  height: auto;
+}
+
+.submit-button {
+  width: auto;
+  height: 60px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+
+  background: #F4CE14;
+  color: black;
+  border: none;
+  border-radius: 16px;
+
+  margin-top: 10%;
+}
+
+.submit-button:hover {
+  background: #FBDABB;
 }
