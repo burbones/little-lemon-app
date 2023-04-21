@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+interface FormResults {
+    resDate: Date;
+    resTime: String;
+    numGuests: number;
+    occasion: String;
+}
+
 interface UpdateTimesAction {
     type: string;
     payload: Date;
@@ -8,6 +15,7 @@ interface UpdateTimesAction {
 interface TableProps {
     availableTimes: String[];
     dispatchTimes: React.Dispatch<UpdateTimesAction>;
+    submitForm: (formdata: FormResults) => void;
 }
 
 function BookingForm(props: TableProps) {
@@ -22,8 +30,14 @@ function BookingForm(props: TableProps) {
         props.dispatchTimes({type: 'update', payload: date});
     }
 
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const formdata: FormResults = {resDate, resTime, numGuests, occasion};
+        props.submitForm(formdata);
+    }
+
   return (
-    <form className="booking-form">
+    <form className="booking-form" role="form" onSubmit={(e: React.FormEvent) => handleSubmit(e)}>
         <label htmlFor="res-date">Choose date*</label>
         <input type="date" id="res-date" required
             onChange={handleDateChange}/>
@@ -35,7 +49,7 @@ function BookingForm(props: TableProps) {
         </select>
 
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" placeholder="1" min="1" max="10" id="guests" 
+        <input type="number" placeholder="1" min="1" max="10" id="guests" required
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumGuests(Number(e.target.value))}/>
 
         <label htmlFor="occasion">Occasion</label>
@@ -44,7 +58,7 @@ function BookingForm(props: TableProps) {
             <option>Anniversary</option>
         </select>
 
-        <input className="submit-button" type="submit" value="Make your reservation" role="button" />
+        <input id="submit-button" className="submit-button" type="submit" value="Make your reservation" role="button" />
     </form>
   )
 }

@@ -342,6 +342,12 @@ form label, input, select {
 form input, select {
   padding: 0 16px;
   margin-bottom: 16px;
+  border-width: 1px;
+  border-color: #495E57;
+}
+
+form input::placeholder, select::placeholder {
+  opacity: 0.5;
 }
 
 form label {
@@ -358,6 +364,7 @@ form label {
 
   background: #F4CE14;
   color: black;
+  opacity: 1;
   border: none;
   border-radius: 16px;
 
@@ -366,4 +373,14 @@ form label {
 
 .submit-button:hover {
   background: #FBDABB;
+}
+
+.booking-heading, .confirmationOK {
+  font-family: 'Markazi Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 90%;
+
+  margin: 0 0 30px 0;
 }

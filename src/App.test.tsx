@@ -1,9 +1,46 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from '@testing-library/react';
+import BookingForm from './components/BookingForm';
+import { fetchAPI } from './utils/const';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('Renders Choose date label element', () => {
+  render(<BookingForm availableTimes={[]} dispatchTimes={() => {}} submitForm={() => {}}/>);
+  const labelElement = screen.getByText("Choose date*");
+  expect(labelElement).toBeInTheDocument();
+});
+
+test('Submits Bookings Form', () => {
+  const initializeTimes = (): String[] => {
+    const initialTimes = fetchAPI(new Date());
+    return initialTimes;
+  }
+  render(<BookingForm availableTimes={initializeTimes()} dispatchTimes={() => {}} submitForm={() => {}} />);
+  fireEvent.submit(screen.getByRole('form'));
+});
+
+test('InitializeTimes function returns the correct expected value', () => {
+  const mockInit = jest.fn(() => {
+    const initialTimes = fetchAPI(new Date());
+    return initialTimes;
+  });
+  mockInit();
+  expect(mockInit).toHaveReturnedWith(fetchAPI(new Date()));
+});
+
+test('UpdateTime function returns the same value that is provided in the state', () => {
+  const mockUpdate = jest.fn((state, action) => {
+    const {type, payload} = action;
+    switch (type) {
+      case "update":
+        return {
+          availableTimes: fetchAPI(payload)
+        };
+      default:
+        return state;
+    }
+  });
+
+  const testDate = new Date(12345678)
+
+  mockUpdate({availableTimes: fetchAPI(new Date())}, {type: 'update', payload: testDate});
+  expect(mockUpdate).toHaveReturnedWith({availableTimes: fetchAPI(testDate)});
 });
