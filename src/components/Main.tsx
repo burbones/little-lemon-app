@@ -5,6 +5,9 @@ import BookingPage from "./BookingPage";
 import { useReducer } from "react";
 import { fetchAPI, submitAPI } from "../utils/const";
 import ConfirmedBooking from "./ConfirmedBooking";
+import About from "./About";
+import Order from "./Order";
+import Login from "./Login";
 
 interface FormResults {
   resDate: Date;
@@ -54,10 +57,14 @@ function Main() {
     <main>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/about" element={<About />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/reservations" 
           element={<BookingPage availableTimes={state.availableTimes} dispatchTimes={dispatch} submitForm={submitForm}/>} />
+        <Route path="/order" element={<Order />}/>
         <Route path="/confirm" element={<ConfirmedBooking />}/>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </main>
   )

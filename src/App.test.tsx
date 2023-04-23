@@ -44,3 +44,17 @@ test('UpdateTime function returns the same value that is provided in the state',
   mockUpdate({availableTimes: fetchAPI(new Date())}, {type: 'update', payload: testDate});
   expect(mockUpdate).toHaveReturnedWith({availableTimes: fetchAPI(testDate)});
 });
+
+test('Checks form date input', () => {
+  render(<BookingForm availableTimes={[]} dispatchTimes={() => {}} submitForm={() => {}}/>);
+  const inputDateElement = screen.getByLabelText("Choose date*");
+  expect(inputDateElement.getAttribute("type")).toBe("date");
+})
+
+test('Checks form number of guests input', () => {
+  render(<BookingForm availableTimes={[]} dispatchTimes={() => {}} submitForm={() => {}}/>);
+  const inputDateElement = screen.getByLabelText("Number of guests*");
+  expect(inputDateElement.getAttribute("type")).toBe("number");
+  expect(inputDateElement.getAttribute("min")).toBe("1");
+  expect(inputDateElement.getAttribute("max")).toBe("10");
+})

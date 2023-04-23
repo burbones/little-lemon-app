@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import main_hero from '../img/main_hero.jpg';
 
 function Hero() {
@@ -7,7 +8,7 @@ function Hero() {
           <h1>Little Lemon</h1>
           <h2>Chicago</h2>
           <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
-          <button>Reserve a Table</button>
+          <Link to="/reservations"><button>Reserve a Table</button></Link>
           <div className='box'>
             <img src={main_hero} alt="main hero" />
           </div>

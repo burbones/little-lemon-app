@@ -25,7 +25,7 @@ header {
   margin: auto;
 }
 
-header nav {
+#navigation {
   display: flex;
   flex-grow: 1;
 }
@@ -114,6 +114,8 @@ main button {
   border-radius: 16px;
 
   margin-top: 10%;
+
+  cursor: pointer;
 }
 
 main button:hover {
@@ -158,13 +160,20 @@ main button:hover {
   margin: 0;
 }
 
+.hightlights a {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+}
+
 .hightlights section {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.hightlights article {
+.hightlights article, .menu article {
   width: calc(var(--colWidth) * 2.5 + 2*var(--insideGutters));
   background: #EDEFEE;
   border-radius: 16px 16px 0px 0px;
@@ -175,19 +184,19 @@ main button:hover {
   overflow: hidden;
 }
 
-.hightlights article img {
+.hightlights article img, .menu article img {
   width: 100%;
   border-radius: 16px 16px 0px 0px;
 }
 
-.hightlights article h3 {
+.hightlights article h3, .menu article h3 {
   font-weight: 700;
   font-size: 18px;
   line-height: 21px;
   padding-left: calc(var(--colWidth) * 0.25);
 }
 
-.hightlights article>p {
+.hightlights article>p, .menu article>p {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
@@ -205,7 +214,7 @@ main button:hover {
   bottom: 0px;
 }
 
-.hightlights article .price {
+.hightlights article .price, .menu article .price {
   padding-right: calc(var(--colWidth) * 0.25);
   margin-top: 18px;
   font-weight: 500;
@@ -215,7 +224,7 @@ main button:hover {
   color: #EE9972;
 }
 
-.hightlights article .title {
+.hightlights article .title, .menu article .title {
   display: flex;
   justify-content: space-between;
 }
@@ -230,8 +239,7 @@ footer {
 footer ul {
   list-style: none;
 }
-
-footer a {
+a {
   text-decoration: none;
 }
 
@@ -273,22 +281,45 @@ footer .footer_menu_inner a, li {
   line-height: 130%;
 }
 
+.about {
+  width: calc(var(--colWidth) * 8 + 7*var(--insideGutters));
+  margin-bottom: 16px;
+}
+
 footer .footer_menu_inner a:hover {
   color: #495E57;
 }
 
 @media screen and (max-width: 600px) {
-  header, .hero_content, .hightlights {
+  header, .hero_content, .hightlights, .about {
     width: calc(100vw - 2*var(--outsideGutters));
-  }
-
-  header nav {
-    display: none;
   }
 
   .mobile {
     display: flex;
     width: calc(var(--colWidth) * 0.5);
+  }
+
+  #navigation {
+    flex-grow: 0;
+  }
+
+  .navBar {
+    display: flex;
+    flex-direction: column;
+    
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 75px;
+
+    width: auto;
+    padding: 16px;
+    background-color: #D9D9D9;
+  }
+
+  .hidden {
+    display: none;
   }
 
   .hero img {
@@ -309,6 +340,11 @@ footer .footer_menu_inner a:hover {
   }
 
   .hightlights button {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .hightlights a {
     position: relative;
     margin-bottom: 16px;
   }
@@ -341,7 +377,6 @@ form label, input, select {
 
 form input, select {
   padding: 0 16px;
-  margin-bottom: 16px;
   border-width: 1px;
   border-color: #495E57;
 }
@@ -350,8 +385,13 @@ form input::placeholder, select::placeholder {
   opacity: 0.5;
 }
 
+form input+p, select+p {
+  color: red;
+}
+
 form label {
   height: auto;
+  margin-top: 16px;
 }
 
 .submit-button {
@@ -373,6 +413,16 @@ form label {
 
 .submit-button:hover {
   background: #FBDABB;
+  cursor: pointer;
+}
+
+.disabledButton {
+  background-color:#D9D9D9;
+}
+
+.disabledButton:hover {
+  background-color:#D9D9D9;
+  cursor: not-allowed;
 }
 
 .booking-heading, .confirmationOK {
@@ -383,4 +433,12 @@ form label {
   line-height: 90%;
 
   margin: 0 0 30px 0;
+}
+
+.menu article>p {
+  padding-bottom: 16px;
+}
+
+.about img {
+  width: 100%;
 }
